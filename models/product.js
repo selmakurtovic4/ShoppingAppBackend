@@ -24,8 +24,8 @@ module.exports = (sequelize, DataTypes) => {
       },
       numOfOrders: {
         type: DataTypes.INTEGER,
+        defaultValue: 0,
         validate: {
-          isInt: true,
           max: 3, 
         },
       },
@@ -33,7 +33,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
 
-      }
+      },
+      
     },
     {
       sequelize,
