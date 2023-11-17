@@ -11,7 +11,7 @@ router.get('/', async (req, res, next) => {
     console.log(users);
     res.status(200).json(users);
   } catch (error) {
-    console.log(error);
+    
     res.status(500).json({ message: 'Internal server error' });
   }
 });
@@ -64,9 +64,8 @@ router.delete('/:id', async (req, res, next) => {
     await deleteUser(req, res, next);
     res.status(200).json({ message: 'User deleted successfully' });
   } catch (error) {
-    
     console.log(error);
-     next(error);
+    res.status(500).json({ message: 'Internal server error' });
   }
 });
 
