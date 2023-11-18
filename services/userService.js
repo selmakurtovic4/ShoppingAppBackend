@@ -18,7 +18,7 @@ class UserService {
   }
 
 
-/*
+
   static async getUserById(userId) {
     try {
       const user = await User.findByPk(userId);
@@ -69,7 +69,7 @@ class UserService {
       throw error;
     }
   }
-  */
+  
 }
 
 module.exports= UserService;
