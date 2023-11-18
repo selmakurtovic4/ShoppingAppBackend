@@ -1,5 +1,5 @@
 "use strict";
-const { getUserId, getAllProducts } = require("../helpers/seederFunctions");
+
 
 /* @type {import('sequelize-cli').Migration} */
 module.exports = {

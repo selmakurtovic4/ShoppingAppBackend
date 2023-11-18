@@ -1,8 +1,12 @@
-import { Router } from 'express';
-//import { getAllUsers, getUserById, updateUser, createUser, deleteUser } from '../controllers/users'; // Import the getUserById function
-//import { UserService } from '../services/userService';
+const express = require("express");
 
-const router = Router();
+//import { getAllUsers, getUserById, updateUser, createUser, deleteUser } from '../controllers/userController.js'; 
+
+
+const router = express.Router();
+const userController = require('../controllers/userController.js');
+
+const getAllUsers = userController.getAllUsers;
 
 
 router.get('/', async (req, res, next) => {
@@ -15,6 +19,7 @@ router.get('/', async (req, res, next) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+/*
 
 router.get('/:id', async (req, res, next) => {
   try {
@@ -69,5 +74,5 @@ router.delete('/:id', async (req, res, next) => {
   }
 });
 
-
-export default router;
+*/
+module.exports = router;
