@@ -21,6 +21,13 @@ module.exports = {
       quantity: {
         type: Sequelize.INTEGER
       },
+      numOfOrders: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0,
+        validate: {
+          max: 3, 
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
