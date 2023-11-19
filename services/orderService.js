@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes, Model } = require('sequelize');
-const { sequelize, Order } = require('../models'); // Adjust the import based on your models structure
+const { sequelize, Order, User } = require('../models'); // Adjust the import based on your models structure
 
 class OrderService {
   constructor() {
@@ -65,6 +65,29 @@ class OrderService {
       throw error;
     }
   }
+
+  static async getOrdersByUserId(userId) {
+
+    try {
+      const orders = await Order.findAll({
+        where: {
+          userId:userId
+      }});
+      
+      //console.log((await Order.findAll({ include: User })).toJSON())
+      if (!orders) {
+        throw new Error('Orders not found');
+      } 
+
+
+      return orders;
+    } catch (error) {
+      throw error;
+    }
+  }
+
+
+
 }
 
 module.exports = OrderService;
