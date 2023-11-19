@@ -108,12 +108,35 @@ module.exports = {
     await queryInterface.bulkInsert('Orders', [
       {
         userId: 1,
+        status: 'FINISHED',
         dateCreated: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         userId: 2,
+        status: 'FINISHED',
+        dateCreated: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 2,
+        status: 'FINISHED',
+        dateCreated: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 3,
+        status: 'FINISHED',
+        dateCreated: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        userId: 2,
+        status: 'FINISHED',
         dateCreated: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),

@@ -23,17 +23,17 @@ async function getOrdersByUserId(request, response, errorHandler) {
   async function getOrderById(request, response, errorHandler) {
     try {
       const { id } = request.params;
-      const order = await orderService.getOrderById(id);
+      const order = await OrderService.getOrderById(id);
   
       if (order) {
         console.log("Order data:", order.dataValues);
         return order.dataValues;
       }
-      // No return value in the else block
+
     } catch (error) {
       console.error("Error in controller:", error);
       errorHandler(error);
-      throw error; // Rethrow the error
+      throw error; 
     }
   }
   
@@ -43,7 +43,7 @@ async function getOrdersByUserId(request, response, errorHandler) {
     console.log("Controller update");
   
     try {
-      await orderService.updateOrder(id, orderData);
+      await OrderService.updateOrder(id, orderData);
     } catch (error) {
       console.error('Error updating order:', error);
       errorHandler(error);
@@ -52,11 +52,12 @@ async function getOrdersByUserId(request, response, errorHandler) {
   
   async function createOrder(request, response, errorHandler) {
     const orderData = request.body;
+    console.log(request.body)
     console.log("Controller create");
   
     try {
       console.log("Service");
-      await orderService.createOrder(orderData);
+      return await OrderService.createOrder(orderData);
     } catch (error) {
       console.error('Error creating order:', error);
       errorHandler(error);
@@ -67,14 +68,35 @@ async function getOrdersByUserId(request, response, errorHandler) {
     const { id } = request.params;
   
     try {
-      await orderService.deleteOrder(id);
+      await OrderService.deleteOrder(id);
     } catch (error) {
       console.error('Error deleting order:', error);
       errorHandler(error);
     }
   }
   
-  module.exports = { getAllOrders,getOrdersByUserId,getOrderById, updateOrder, createOrder, deleteOrder };
+  // orderController.js
+
+async function addProductToOrder(request, response, errorHandler) {
+  const { id } = request.params;
+  const  productId  = request.body.productId
+  console.log(id);
+
+  try {
+    return await OrderService.addProductToOrder(id, productId);
+    //response.status(200).json({ message: 'Product added to order successfully' });
+  } catch (error) {
+    console.error('Error adding product to order:', error);
+    errorHandler(error);
+  }
+}
+
+
+
+
+
+
+  module.exports = { getAllOrders,getOrdersByUserId,getOrderById, updateOrder, createOrder, deleteOrder, addProductToOrder };
   
   
 
