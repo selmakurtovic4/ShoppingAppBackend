@@ -1,8 +1,4 @@
 const  userService  = require('../services/userService');
-//import UserService from "../services/userService.js";
-
-
-
 
 async function getAllUsers(request, response, errorHandler) {
   try {
