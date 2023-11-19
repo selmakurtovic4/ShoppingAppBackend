@@ -119,27 +119,6 @@ module.exports = {
         dateCreated: new Date(),
         createdAt: new Date(),
         updatedAt: new Date(),
-      },
-      {
-        userId: 2,
-        status: 'FINISHED',
-        dateCreated: new Date(),
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        userId: 3,
-        status: 'FINISHED',
-        dateCreated: new Date(),
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        userId: 2,
-        status: 'FINISHED',
-        dateCreated: new Date(),
-        createdAt: new Date(),
-        updatedAt: new Date(),
       }
     ]);
     await queryInterface.bulkInsert('OrderProducts', [
