@@ -12,6 +12,59 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.get('/:id', async (req, res, next) => {
+  try {
+    const order = await orderController.getOrderById(req, res, next);
+
+    if (order) {
+      res.status(200).json(order);
+    } else {
+      res.status(404).json({ message: 'Order not found' });
+    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+router.put('/:id', async (req, res, next) => {
+  try {
+    await orderController.updateOrder(req, res, next);
+    res.status(200).json({ message: 'Update successful' });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+router.post('/', async (req, res, next) => {
+  try {
+    await orderController.createOrder(req, res, next);
+    res.status(200).json({ message: 'Order created successfully' }); 
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    await orderController.deleteOrder(req, res, next);
+    res.status(200).json({ message: 'Order deleted successfully' });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
+
+
+
+
+
+
+
+
 router.get('/user/:userId', async (req, res, next) => {
     try {
       const orders = await orderController.getOrdersByUserId(req, res, next);
